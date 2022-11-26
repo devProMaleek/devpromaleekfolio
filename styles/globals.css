@@ -1,26 +1,16 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@layer components {
+  .heroButton {
+    @apply px-6 py-2 border border-gray-500 rounded-full uppercase text-xs my-2 md:-my-1 tracking-widest text-gray-500 transition-all hover:border-red-500/40 hover:text-red-500/40 hover:animate-bounce;
   }
-  body {
-    color: white;
-    background: black;
+  .section-title {
+    @apply absolute top-20 uppercase tracking-[20px] text-gray-500 text-2xl;
+  }
+
+  .contactInput {
+    @apply outline-none bg-slate-400/10 rounded-md border-b px-6 py-4 border-[#242424] text-gray-300 placeholder-gray-400 transition-all focus:border-red-500/40 focus:text-white/70 hover:border-red-500/40;
   }
 }
