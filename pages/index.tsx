@@ -20,7 +20,7 @@ type Props = {
   skills: Skill[];
   projects: Project[];
   socials: Social[];
-}
+};
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo: PageInfo = await fetchPageInfo();
@@ -39,38 +39,40 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     },
 
     revalidate: 10,
-  }
-}
+  };
+};
 
-export default function Home(props: Props) {
+export default function Home({ socials, pageInfo, experiences, skills, projects }: Props) {
   return (
-    <div className="bg-primaryDarkRed text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-red-500/80">
+    <div className="bg-primaryDarkRed text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-red-500/80">
       <Head>
         <title>devProMaleek's Portfolio</title>
       </Head>
 
       <main>
         {/* Header */}
-        <Header />
+        <section className="">
+          <Header socials={socials} />
+        </section>
         {/* Hero */}
         <section id="hero" className="snap-start">
-          <Hero />
+          <Hero pageInfo={pageInfo} />
         </section>
         {/* About */}
         <section id="about" className="snap-center">
-          <About />
+          <About pageInfo={pageInfo} />
         </section>
         {/* Experience */}
         <section id="experience" className="snap-center">
-          <WorkingExperience />
+          <WorkingExperience experiences={experiences} />
         </section>
         {/* Skills */}
         <section id="skills" className="snap-start">
-          <Skills />
+          <Skills skills={skills} />
         </section>
         {/* Projects */}
         <section id="projects" className="snap-start">
-          <Projects />
+          <Projects projects={projects} />
         </section>
         {/* Contact Me */}
         <section id="contact" className="snap-start">

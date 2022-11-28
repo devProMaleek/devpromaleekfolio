@@ -1,11 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Project } from '../typings';
+import { urlFor } from '../sanity';
 
-type Props = {};
+type Props = {
+  projects: Project[];
+};
 
-const Projects = (props: Props) => {
-  const projects = [1, 2, 3, 4, 5];
+const Projects = ({projects}: Props) => {
   return (
     <>
       <motion.div
@@ -37,13 +40,17 @@ const Projects = (props: Props) => {
                   <span className="underline decoration-red-500/50 pb-2">
                     Case Study {index + 1} of {projects.length}:
                   </span>{' '}
-                  UPS clone
+                  {project?.title}
                 </h4>
+
+                <div className="flex items-center space-x-2 justify-center">
+                  {project?.technologies.map((technology) => (
+                    <Image key={technology._id} src={urlFor(technology.image).url()} alt="Technology Logo" className='h-10 w-10'/>
+                  ))}
+                </div>
+
                 <p className="text-lg text-center md:text-left">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ullam cupiditate alias! Possimus enim
-                  vel neque eum sed soluta dolores, maxime non similique tempore veniam aliquam quibusdam veritatis amet
-                  numquam quia dolor, impedit sequi velit qui repellat provident laudantium! In repudiandae asperiores
-                  quia, nisi quae nesciunt natus ducimus dignissimos corporis!
+                  {project?.summary}
                 </p>
               </div>
             </div>

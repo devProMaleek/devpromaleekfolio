@@ -1,11 +1,15 @@
 import React from 'react';
-import aboutPix from '../public/images/Profile Pic.jpeg';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { PageInfo } from '../typings';
+import { urlFor } from '../sanity';
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-const About = (props: Props) => {
+
+const About = ({pageInfo}: Props) => {
   return (
     <>
       <motion.div
@@ -22,8 +26,10 @@ const About = (props: Props) => {
           className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-48 md:h-96 xl:w-[500px] xl:h-[600px]"
         >
           <Image
-            src={aboutPix}
+            src={urlFor(pageInfo?.profilePic).url()}
             alt="aboutPix"
+            width="500"
+            height="600"
             className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-48 md:h-96 xl:w-[500px] xl:h-[600px]"
           />
         </motion.div>
@@ -34,11 +40,7 @@ const About = (props: Props) => {
             Here is a <span className="underline decoration-red-500/50">little</span> background
           </h4>
           <p className="text-base">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab illo, odio voluptatum repellat ratione sed
-            laudantium porro error, ullam fuga quia, earum asperiores eius aspernatur molestiae! Officiis, corporis
-            dolor sint non sequi maiores aperiam eligendi maxime eos placeat necessitatibus nostrum expedita nemo id
-            similique veritatis? Nisi odit eaque nesciunt vero molestias saepe repellendus! Dicta ducimus reiciendis
-            laboriosam sit rem eaque officia doloremque tempore, quam delectus error id a, asperiores ad!
+            {pageInfo.backgroundInformation }
           </p>
         </div>
       </motion.div>
