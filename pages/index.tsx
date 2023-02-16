@@ -46,7 +46,7 @@ export default function Home({ socials, pageInfo, experiences, skills, projects 
   return (
     <div className="bg-primaryDarkRed text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-red-500/80">
       <Head>
-        <title>devProMaleek's Portfolio</title>
+        <title>{pageInfo?.name} - Portfolio</title>
       </Head>
 
       <main>
@@ -76,7 +76,7 @@ export default function Home({ socials, pageInfo, experiences, skills, projects 
         </section>
         {/* Contact Me */}
         <section id="contact" className="snap-start">
-          <Contact />
+          <Contact pageInfo={pageInfo} />
         </section>
       </main>
     </div>

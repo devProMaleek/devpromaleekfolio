@@ -1,9 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { SiJavascript } from 'react-icons/si';
-
-import amazon from '../public/images/amazon.jpg';
 import { Experience } from '../typings';
 import { urlFor } from '../sanity';
 
@@ -37,7 +34,7 @@ const ExperienceCard = ({ experience }: Props) => {
 
           <div className="flex space-x-2 my-2">
             {experience.technologies.map((technology) => (
-              <img
+              <Image
                 key={experience._id}
                 src={urlFor(technology.image).url()}
                 alt="Technology Logo"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { PhoneIcon, MapPinIcon, EnvelopeIcon } from '@heroicons/react/24/solid';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { PageInfo } from '../typings';
 
 type Inputs = {
   name: string;
@@ -9,9 +10,11 @@ type Inputs = {
   message: string;
 };
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-const Contact = (props: Props) => {
+const Contact = ({pageInfo}: Props) => {
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (formData) => {
     window.location.href = `mailto:abdulmalikadebayo07@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}, ${formData.message} \n
@@ -32,21 +35,21 @@ const Contact = (props: Props) => {
             <div className="flex items-center space-x-5 justify-center">
               <PhoneIcon className="text-red-500 h-7 w-7 animate-pulse" />
               <a href="tel:+2349039561875" className="text-lg md:text-2xl">
-                +2349039561875
+                {pageInfo.phoneNumber}
               </a>
             </div>
 
             <div className="flex items-center space-x-5 justify-center">
               <EnvelopeIcon className="text-red-500 h-7 w-7 animate-pulse" />
               <a href="mailto:abdulmalikadebayo07@gmail.com" className="text-lg md:text-2xl">
-                abdulmalikadebayo07@gmail.com
+                {pageInfo.email}
               </a>
             </div>
 
             <div className="flex flex-wrap items-center space-x-5 justify-center">
               <MapPinIcon className="text-red-500 h-7 w-7 animate-pulse" />
-              <a href="https://goo.gl/maps/9zVpxKucypJ3t7d3A" target="_blank" className="text-lg md:text-2xl">
-                28 Adeyeri Cres, Ifako-Ijaiye 101232, Lagos Nigeria.
+              <a href="https://goo.gl/maps/9zVpxKucypJ3t7d3A" target="_blank" rel="noreferrer" className="text-lg md:text-2xl">
+                {pageInfo.address}
               </a>
             </div>
           </div>

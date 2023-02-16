@@ -20,8 +20,8 @@ const Header = ({ socials }: Props) => {
       >
         {/* Social Icons */}
         {socials.map((social, index) => (
-          <div className="">
-            <SocialIcon key={index} url={social.url} fgColor="gray" bgColor="transparent" />
+          <div key={social._id} className="">
+            <SocialIcon url={social.url} fgColor="gray" bgColor="transparent" />
           </div>
         ))}
       </motion.div>
